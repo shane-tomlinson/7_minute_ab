@@ -3,6 +3,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 describe('client', function () {
+  describe('facebook style', function () {
+    // https://github.com/facebook/planout
+
+    describe('get', function () {
+      it('returns a variant', function () {
+        var experiment = new MyExperiment('user_id');
+        var value = experiment.get('feature_name');
+      });
+    });
+  });
+
+
   describe('etsy style', function () {
     // https://github.com/etsy/feature
 
@@ -15,7 +27,7 @@ describe('client', function () {
     });
 
     describe('variant', function () {
-      it('gets a variant for a feature', function () {
+      it('gets a variant for a feature, must be wrapped in isEnabled', function () {
         if (experiment.isEnabled('feature_name')) {
           var value = experiment.variant('feature_name');
           // use value here.
